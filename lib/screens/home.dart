@@ -1,3 +1,4 @@
+import 'package:fitnessapp/screens/settings.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,7 +13,7 @@ class HomePage extends StatelessWidget {
           backgroundColor: Colors.black,
           textTheme: Theme.of(context).textTheme,
           title: Text('НОВАЯ ГАЗЕТА'), 
-          leading: Icon(Icons.book, color: Colors.white,),
+          leading: Icon(Icons.bookmark, color: Colors.white,),
           actions: <Widget>[
             IconButton(
               onPressed: (){},
@@ -25,7 +26,9 @@ class HomePage extends StatelessWidget {
               icon: Icon(Icons.search),
             ),
             IconButton(
-              onPressed: (){},
+              onPressed: (){
+                Navigator.of(context).push(_createRoute());
+              },
               padding: const EdgeInsets.all(0.0),
               icon: Icon(Icons.settings),
             ),
@@ -38,4 +41,22 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => SettingsPage(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
