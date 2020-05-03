@@ -36,14 +36,25 @@ class HomePage extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: InkWell(
-            onTap: () { print('card tap'); },
-            hoverColor: Colors.red,
-            splashColor: Colors.blue,
-            child: Card(
-              child: Text('Text for body lon long text and again ldskfgmsdlfdsf fds  fdsf kjg;lkfdsjg;')
+          child: Card(
+            child: Text('Text for body lon long text and again ldskfgmsdlfdsf fds  fdsf kjg;lkfdsjg;')
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.rss_feed),
+              title: Text('Моя лента')
             ),
-          )
+            BottomNavigationBarItem(
+              icon: Icon(Icons.today),
+              title: Text('Выбор редакции')
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.bookmark_border),
+              title: Text('Закладки')
+            )
+          ],
         ),
       ),
     );
