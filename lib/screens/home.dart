@@ -7,8 +7,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: const Color(0xFFE0E0E0),
       child: Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.black,
           textTheme: Theme.of(context).textTheme,
@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
             ),
             IconButton(
               onPressed: (){
-                Navigator.of(context).push(_createRoute());
+                Navigator.of(context).push(_createSettingsRoute());
               },
               padding: const EdgeInsets.all(0.0),
               icon: Icon(Icons.settings),
@@ -36,14 +36,21 @@ class HomePage extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
-          child: Text('Text for body'),
+          child: InkWell(
+            onTap: () { print('card tap'); },
+            hoverColor: Colors.red,
+            splashColor: Colors.blue,
+            child: Card(
+              child: Text('Text for body lon long text and again ldskfgmsdlfdsf fds  fdsf kjg;lkfdsjg;')
+            ),
+          )
         ),
       ),
     );
   }
 }
 
-Route _createRoute() {
+Route _createSettingsRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => SettingsPage(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
